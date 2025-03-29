@@ -1,0 +1,23 @@
+{
+  "name": "ejs-templates",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "nodemon ./server/index.ts",
+    "build": "ts-node scripts/build.ts"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@types/browser-sync": "^2.29.0",
+    "@types/ejs": "^3.1.5",
+    "@types/express": "^5.0.1",
+    "@types/html-minifier": "^4.0.5",
+    "@types/node": "^22.13.14",
+    "browser-sync": "^3.0.3",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "html-minifier": "^4.0.0",
+    "nodemon": "^3.1.9",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.2"
+  }
+}

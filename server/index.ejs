@@ -1,0 +1,13 @@
+<h1>Templates</h1>
+
+<div>
+  <ul>
+    <% for (var i = 0; i < templates.length; i++) { %>
+      <li>
+        <a href="<%= templates[i].route %>">
+          <%= templates[i].route %>
+        </a>
+      </li>
+    <% } %>
+  </ul>
+</div>
