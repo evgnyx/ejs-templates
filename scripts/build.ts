@@ -1,7 +1,7 @@
 import { templates } from './templates';
 import { renderTemplate } from './ejs';
 
-templates.forEach((template) => {
-  const html = renderTemplate(template);
+templates.forEach(async (template) => {
+  const html = await renderTemplate(template);
   console.log(html)
 });

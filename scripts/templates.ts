@@ -8,11 +8,12 @@ const mapTemplate = (name: string): TemplateConfigParams => {
   const route = name.replace(ext.ejs, '');
 
   const result: TemplateConfigParams = {
+    route: `/${route}`,
     source: currentPath,
-    layout: paths.defaultLayout,
     filename: route + ext.html,
     path: paths.dist,
-    route: `/${route}`,
+    layout: paths.defaultLayout,
+    styles: paths.defaultStyles,
   };
 
   if (getStats(currentPath).isDirectory()) {
@@ -20,12 +21,16 @@ const mapTemplate = (name: string): TemplateConfigParams => {
     const templateFiles = readDir(currentPath);
     templateFiles.forEach((filename) => {
       if (RegExp(paths.config).test(filename)) {
-        const { path, layout } = readJSON<TemplateConfigParams>(join(currentPath, filename));
+        const { path, layout, styles } = readJSON<TemplateConfigParams>(join(currentPath, filename));
         if (path) result.path = join(result.path, path);
         if (layout === null) result.layout = null;
+        if (styles === null) result.styles = null;
       }
       if (result.layout !== null && RegExp(paths.layout).test(filename)) {
         result.layout = join(currentPath, paths.layout);
+      }
+      if (result.styles !== null && RegExp(paths.styles).test(filename)) {
+        result.styles = join(currentPath, paths.styles);
       }
     });
   }

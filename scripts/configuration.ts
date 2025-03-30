@@ -10,19 +10,21 @@ export const ext = {
 };
 
 export const partial = {
-  body: '<%= BODY %>',
+  body: '<!-- BODY -->',
+  styles: '<!-- STYLES -->',
 };
 
 export const paths = {
   root,
   template: `index.ejs`,
   layout: 'layout.ejs',
+  styles: 'index.css',
   config: 'config.json',
   dist: join(root, 'dist'),
-  defaultLayout: join(root, 'src/layout/index.ejs'),
   templates: join(root, 'src/templates'),
   partials: join(root, 'src/partials'),
-  utils: join(root, 'src/utils'),
+  defaultLayout: join(root, 'src/layout/index.ejs'),
+  defaultStyles: join(root, 'src/styles/index.css'),
 }
 
 export const configuration = {
@@ -32,6 +34,7 @@ export const configuration = {
     template: {
       source: join(root, 'server', paths.template),
       layout: paths.defaultLayout,
+      styles: paths.defaultStyles,
     } as TemplateConfigParams
   },
 };

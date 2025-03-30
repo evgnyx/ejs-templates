@@ -9,7 +9,6 @@
     "strict": true,
     "skipLibCheck": true
   },
-  "include": ["src/utils/**/*"],
   "exclude": ["node_modules"],
   "ts-node": {
     "esm": true,

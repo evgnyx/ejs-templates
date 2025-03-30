@@ -3,8 +3,8 @@ import { templates, syncServer, configuration, renderTemplate } from '../scripts
 
 const app = express();
 
-app.get('/', (_, res: Response) => {
-  const html = renderTemplate(
+app.get('/', async (_, res: Response) => {
+  const html = await renderTemplate(
     configuration.dev.template,
     { ...configuration.dev.env, templates }
   );
@@ -13,7 +13,7 @@ app.get('/', (_, res: Response) => {
 
 templates.forEach((template) => {
   app.get(template.route, async (_, res) => {
-    const html = renderTemplate(
+    const html = await renderTemplate(
       template,
       configuration.dev.env
     );
