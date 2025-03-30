@@ -19,17 +19,18 @@ const mapTemplate = (name: string): TemplateConfigParams => {
   if (getStats(currentPath).isDirectory()) {
     result.source = join(currentPath, paths.template);
     const templateFiles = readDir(currentPath);
-    templateFiles.forEach((filename) => {
-      if (RegExp(paths.config).test(filename)) {
-        const { path, layout, styles } = readJSON<TemplateConfigParams>(join(currentPath, filename));
+    templateFiles.forEach((templateFilename) => {
+      if (RegExp(paths.config).test(templateFilename)) {
+        const { path, layout, styles, filename } = readJSON<TemplateConfigParams>(join(currentPath, templateFilename));
         if (path) result.path = join(result.path, path);
         if (layout === null) result.layout = null;
         if (styles === null) result.styles = null;
+        if (filename) result.filename = filename;
       }
-      if (result.layout !== null && RegExp(paths.layout).test(filename)) {
+      if (result.layout !== null && RegExp(paths.layout).test(templateFilename)) {
         result.layout = join(currentPath, paths.layout);
       }
-      if (result.styles !== null && RegExp(paths.styles).test(filename)) {
+      if (result.styles !== null && RegExp(paths.styles).test(templateFilename)) {
         result.styles = join(currentPath, paths.styles);
       }
     });
