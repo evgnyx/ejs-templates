@@ -1,6 +1,6 @@
 import { join } from 'path';
-import { ext, paths } from './configuration';
 import { TemplateConfigParams } from './types';
+import { ext, paths } from './configuration';
 import { getStats, readDir, readJSON } from './helpers';
 
 const mapTemplate = (name: string): TemplateConfigParams => {

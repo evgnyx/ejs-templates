@@ -1,7 +1,7 @@
 import ejs from 'ejs';
 import { TemplateConfigParams } from './types';
-import { readFile } from './helpers';
 import { partial, paths } from './configuration';
+import { readFile } from './helpers';
 import { minify } from './minify';
 import { getStyles } from './styles';
 import * as utils from '../src/utils';
